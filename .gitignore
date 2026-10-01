@@ -1,0 +1,18 @@
+# Temporary / scratch files
+.coda/tmp/
+.coda/omni-parser/
+nul
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+
+# Environment / secrets
+.env
+*.local
+
+# OS junk
+Thumbs.db
+.DS_Store

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-empathize/references/schema.json)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-define/SKILL.md)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-define/references/schema.json)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-ideate/SKILL.md)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-ideate/references/schema.json)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-prototype-test/SKILL.md)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-prototype-test/references/schema.json)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-cycle/SKILL.md)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-value-feasibility/SKILL.md)",
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-value-feasibility/references/schema.json)"
+    ]
+  }
+}
