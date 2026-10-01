@@ -1,0 +1,1 @@
+The dashboard is not returning the proper amount of expenses for the month I'm looking for. I'm not quite sure but it seems the month is off. 

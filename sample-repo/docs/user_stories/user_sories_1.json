@@ -1,0 +1,301 @@
+[
+  {
+    "id": "1787650c-606f-4008-8a62-736251a248d5",
+    "external_id": null,
+    "title": "Implement Core Expense Logging Functionality",
+    "description": "• Context: User wants a fast and easy way to record expenses.\n• Objective: Create the core functionality for adding expenses with amount, category, and date.\n• In Scope: Input fields for amount, category, and date. Data validation to ensure correct input format.  Confirmation message upon successful saving.\n• Out of scope: Receipt scanning or image upload.  Location-based expense tracking.\n• Assumptions: Manual entry of expense details is acceptable.  No need for complex input validation beyond basic checks.\n• Dependencies: Backend API endpoint for saving expense data. Frontend form for user input.\n• Tech Note: Standard form elements in React and data validation in FastAPI.",
+    "type": "Epic"
+  },
+  {
+    "id": "20022553-d62d-4bea-b126-95376df2478b",
+    "title": "As a Developer, I want to set up the FastAPI backend service structure",
+    "parentId": "1787650c-606f-4008-8a62-736251a248d5",
+    "column": "1787650c-606f-4008-8a62-736251a248d5",
+    "description": "• Context: A simple expense tracking application needs a backend API.\n• Objective: Establish the basic FastAPI application foundation for future endpoint development.\n• In Scope: Initialize FastAPI app, basic configuration, health check endpoint.\n• Out of Scope: Database integration, specific feature endpoints, frontend integration.\n• Assumptions: Python 3.x and pip are available in the development environment.\n• Dependencies: None.\n• Tech Note: Utilize the FastAPI Python framework.",
+    "acceptanceCriteria": "Given a compatible python environment\nand the fastapi framework is installed\nwhen the backend application is started\nthen the service runs without errors\nand responds successfully to a get request on a root or health check endpoint.",
+    "externalId": null,
+    "estimatedHours": 4,
+    "type": "Task"
+  },
+  {
+    "id": "2abe759e-dc63-474f-b5eb-2ffa131a1874",
+    "title": "As a Developer, I want to set up the React frontend application structure",
+    "parentId": "1787650c-606f-4008-8a62-736251a248d5",
+    "column": "1787650c-606f-4008-8a62-736251a248d5",
+    "description": "• Context: The application requires a user interface for interaction.\n• Objective: Initialize a basic React application to serve as the foundation for UI components.\n• In Scope: Create React app using standard tools (e.g., Create React App), set up basic routing for `/add` and `/dashboard`.\n• Out of Scope: Specific page implementations, API integration, state management setup, styling.\n• Assumptions: Node.js and npm/yarn are available.\n• Dependencies: None.\n• Tech Note: Use React library, React Router for routing.",
+    "acceptanceCriteria": "Given a node.js environment\nand standard react tooling is used\nwhen the react application is initialized and started\nthen it runs without errors in the browser\nand basic routes for `/add` and `/dashboard` are configured.",
+    "externalId": null,
+    "estimatedHours": 5,
+    "type": "Task"
+  },
+  {
+    "id": "34ed8b74-2c76-4be8-b472-a72c6cf22c04",
+    "title": "As a Developer, I want to integrate SQLite database with the FastAPI backend",
+    "parentId": "1787650c-606f-4008-8a62-736251a248d5",
+    "column": "1787650c-606f-4008-8a62-736251a248d5",
+    "description": "• Context: The application needs to persist expense data.\n• Objective: Enable the backend service to connect to and interact with an SQLite database.\n• In Scope: SQLite database file creation, connection setup within FastAPI, definition of the expense table schema.\n• Out of Scope: API endpoints for data manipulation, complex ORM features, data migrations.\n• Assumptions: SQLite is sufficient for single-user MVP storage needs.\n• Dependencies: Backend API Setup must be complete.\n• Tech Note: Use Python's built-in sqlite3 module or a lightweight ORM like SQLAlchemy Core with SQLite.",
+    "acceptanceCriteria": "Given the fastapi backend application structure exists\nand an sqlite database file is configured\nwhen the application starts\nthen it successfully connects to the sqlite database\nand the necessary 'expenses' table exists with columns for amount, category, and date.",
+    "externalId": null,
+    "estimatedHours": 6,
+    "type": "Task"
+  },
+  {
+    "id": "509ad0c4-0905-49d7-980f-bc198b9cc08b",
+    "title": "As a Developer, I want to create the `/dashboard` API endpoint for monthly summaries",
+    "parentId": "1787650c-606f-4008-8a62-736251a248d5",
+    "column": "1787650c-606f-4008-8a62-736251a248d5",
+    "description": "• Context: Users need to see a summary of where their money went.\n• Objective: Implement a backend API endpoint to provide monthly expense totals grouped by category.\n• In Scope: Create GET endpoint `/dashboard`, query SQLite for current month's expenses, aggregate by category, return totals.\n• Out of Scope: Date range filtering, advanced analytics, frontend integration, complex charting data structures.\n• Assumptions: Definition of 'current month' is based on the server's current date.\n• Dependencies: Database Integration must be complete.\n• Tech Note: Implement using FastAPI route, perform SQL aggregation queries on SQLite.",
+    "acceptanceCriteria": "Given the backend service is running and contains expense data for the current month\nand categories like 'food' and 'transport' exist in the data\nwhen a get request is sent to the `/dashboard` endpoint\nthen the service returns a success response (e.g., 200 ok)\nand the response body contains expense totals aggregated by category for the current calendar month.",
+    "externalId": null,
+    "estimatedHours": 8,
+    "type": "Story"
+  },
+  {
+    "id": "5d8e1aae-b2a9-4913-8214-0c4034e60207",
+    "title": "As a Developer, I want to create the `/add` API endpoint to save expenses",
+    "parentId": "1787650c-606f-4008-8a62-736251a248d5",
+    "column": "1787650c-606f-4008-8a62-736251a248d5",
+    "description": "• Context: Users need to log their expenses via the application.\n• Objective: Implement a backend API endpoint to receive and store new expense data.\n• In Scope: Create POST endpoint `/add`, validate input (amount, category, date), save valid data to SQLite.\n• Out of Scope: User authentication, frontend integration, error handling beyond basic validation.\n• Assumptions: Input data format (e.g., JSON payload) is defined.\n• Dependencies: Database Integration must be complete.\n• Tech Note: Implement using FastAPI route, perform data insertion into SQLite.",
+    "acceptanceCriteria": "Given the backend service is running with database integration\nand a valid expense payload (amount, category, date) is defined\nwhen a post request is sent to the `/add` endpoint with the payload\nthen the service returns a success response (e.g., 201 created)\nand the expense record is correctly stored in the sqlite database.",
+    "externalId": null,
+    "estimatedHours": 8,
+    "type": "Story"
+  },
+  {
+    "id": "772b28e1-76c1-4cdb-b392-2df54a1b9adf",
+    "title": "As a Developer, I want to configure Docker for simple local deployment",
+    "parentId": "1787650c-606f-4008-8a62-736251a248d5",
+    "column": "1787650c-606f-4008-8a62-736251a248d5",
+    "description": "• Context: The user requires an easy way to run the application locally.\n• Objective: Containerize the backend and frontend for deployment via Docker Compose.\n• In Scope: Create Dockerfile(s) for backend/frontend, create `docker-compose.yml` to run the application (single container if feasible, or simple multi-container), ensure `docker compose up` works.\n• Out of Scope: Production-ready Docker configuration, complex networking, volume management beyond basic persistence.\n• Assumptions: User has Docker and Docker Compose installed.\n• Dependencies: Backend API Setup, React Frontend Setup.\n• Tech Note: Use Docker, Docker Compose. Aim for single container or simple backend/frontend service setup.",
+    "acceptanceCriteria": "Given the application source code and dockerfiles/docker-compose.yml\nand docker desktop (or equivalent) is running\nwhen the user runs `docker compose up` in the project root\nthen the application services (backend, frontend) build and start successfully\nand the application is accessible via the browser.",
+    "externalId": null,
+    "estimatedHours": 6,
+    "type": "Task"
+  },
+  {
+    "id": "b1ddf156-b08c-4981-9603-130e2fb3afc2",
+    "title": "As a Developer, I want to build the `/add` expense form page in React",
+    "parentId": "1787650c-606f-4008-8a62-736251a248d5",
+    "column": "1787650c-606f-4008-8a62-736251a248d5",
+    "description": "• Context: Users need a simple form to input their expenses.\n• Objective: Create the UI for the expense entry form on the `/add` page.\n• In Scope: Build React component for `/add` page, include fields (amount, category, date), save button, API call to backend `/add` endpoint, display toast confirmation.\n• Out of Scope: Dashboard page implementation, complex validation, advanced styling.\n• Assumptions: The `/add` API endpoint is functional.\n• Dependencies: React Frontend Setup, `/add` API Endpoint.\n• Tech Note: Use React components, state management (e.g., useState), fetch/axios for API calls.",
+    "acceptanceCriteria": "Given the react application is running\nand the user navigates to the `/add` page\nwhen the user fills in amount, category, date and clicks 'save'\nthen an api call is made to the backend `/add` endpoint with the data\nand a success toast message is displayed upon successful save.",
+    "externalId": null,
+    "estimatedHours": 10,
+    "type": "Story"
+  },
+  {
+    "id": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "external_id": null,
+    "title": "Implement Expense Categorization and Summary",
+    "description": "• Context: User wants to see a monthly breakdown of expenses by category.\n• Objective: Provide a clear and informative monthly expense summary grouped by categories.\n• In Scope: Categorization of expenses (e.g., Food, Transport). Monthly aggregation and display in a chart format.\n• Out of scope: Customizable categories or subcategories.  Exporting summary data to other formats.\n• Assumptions: Predefined categories will be sufficient initially. Basic charting will meet user needs.\n• Dependencies: Backend API for data processing. Frontend UI for displaying the summary.\n• Tech Note: Basic charting libraries within React will be used.",
+    "type": "Epic"
+  },
+  {
+    "id": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "external_id": null,
+    "title": "Develop Backend API for Expense Tracking",
+    "description": "• Context: User needs a simple and fast way to log and track expenses.\n• Objective: Create a robust and efficient backend API to handle expense data management.\n• In Scope: API endpoints for adding, retrieving, and summarizing expenses. Data validation and error handling. Database interaction using SQLite.\n• Out of scope: Integration with external banking APIs. Multi-user support or shared budgets.\n• Assumptions: SQLite is suitable for initial data storage needs.  Focus on single-user functionality.\n• Dependencies: Frontend development for UI interaction. Database setup and configuration.\n• Tech Note: FastAPI framework will be used for backend development. SQLite will be used for the database.",
+    "type": "Epic"
+  },
+  {
+    "id": "8c7875d3-4087-4de8-9312-c162d5e48d63",
+    "external_id": null,
+    "title": "Setup Dockerized Deployment",
+    "description": "• Context: User needs an easy way to run the application locally.\n• Objective: Configure a simple and reliable Dockerized deployment solution.\n• In Scope: Single container deployment using docker-compose.  Easy setup with a single command: 'docker compose up'.\n• Out of scope: Deployment to cloud platforms (AWS, Azure, etc.).  Orchestration with Kubernetes.\n• Assumptions: User has Docker and docker-compose installed. Focus on local development environment.\n• Dependencies: Finalized backend and frontend code. Dockerfile and docker-compose configuration files.\n• Tech Note: Docker and docker-compose will be used for deployment.",
+    "type": "Epic"
+  },
+  {
+    "id": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "external_id": null,
+    "title": "Design and Implement Frontend UI",
+    "description": "• Context: User needs a simple and intuitive interface for interaction.\n• Objective: Create a user-friendly frontend UI for adding expenses and viewing monthly summaries.\n• In Scope: Two main pages: '/add' for expense input and '/dashboard' for summary view.  Clear and concise data presentation.\n• Out of scope: Advanced charting or visualization libraries beyond basic charting. Multi-language support.\n• Assumptions: Users are comfortable with basic web navigation. Focus on desktop usage initially.\n• Dependencies: Backend API for data retrieval and storage. Dockerized deployment for local testing.\n• Tech Note: React library will be used for frontend development.",
+    "type": "Epic"
+  },
+  {
+    "id": "48436c6d-90f0-4780-b785-349d022a0b03",
+    "title": "Story: As a User, I want a simple chart visualizing my monthly spending categories",
+    "parentId": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "column": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "description": "• Context: User desires a visual representation of spending breakdown.\n• Objective: Integrate a simple chart (e.g., pie or bar) on the dashboard.\n• In Scope: Displaying categorized spending totals visually.\n• Out of Scope: Interactive charts, complex chart types, custom chart styling.\n• Assumptions: Categorized summary data is available on the dashboard page.\n• Dependencies: Dashboard page displaying categorized totals.\n• Tech Note: Use a lightweight React charting library.",
+    "acceptanceCriteria": "Given i am on the '/dashboard' page\nand the categorized spending totals are displayed\nwhen the dashboard component renders\nthen a simple chart (e.g., pie chart) is displayed\nand the chart visually represents the proportion of spending per category.",
+    "externalId": null,
+    "estimatedHours": 5,
+    "type": "Story"
+  },
+  {
+    "id": "93ef9a2d-092c-40ab-92b3-d07d74bc347f",
+    "title": "Story: As a User, I want to quickly add an expense via a simple form",
+    "parentId": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "column": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "description": "• Context: User needs a fast way to log expenses.\n• Objective: Implement a form on the '/add' page to capture expense details.\n• In Scope: Fields for Amount, Category (text input), Date. Save button triggering API call.\n• Out of Scope: Category suggestions, complex validation, recurring expenses.\n• Assumptions: Backend API endpoint for saving expenses exists.\n• Dependencies: React frontend structure, Backend API.\n• Tech Note: Use React for the '/add' page component.",
+    "acceptanceCriteria": "Given i am on the '/add' expense page\nand the form fields (amount, category, date) are visible\nwhen i fill in the required details and click 'save'\nthen the expense data is sent to the backend api\nand i receive a confirmation that the expense was saved.",
+    "externalId": null,
+    "estimatedHours": 6,
+    "type": "Story"
+  },
+  {
+    "id": "9c01ae7e-0f83-439e-b03e-d4b62e1304e7",
+    "title": "Task: Implement backend API endpoint to add expenses",
+    "parentId": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "column": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "description": "• Context: The frontend needs an API to save new expense entries.\n• Objective: Create a FastAPI POST endpoint to receive and store expense data.\n• In Scope: Endpoint definition, request body validation (amount, category, date), saving to SQLite.\n• Out of Scope: Error handling for database failures, authentication/authorization.\n• Assumptions: SQLite database is set up and accessible.\n• Dependencies: FastAPI project structure, SQLite database model.\n• Tech Note: Use FastAPI, Pydantic for validation, SQLite for storage.",
+    "acceptanceCriteria": "Given the fastapi backend is running\nand the sqlite database is connected\nwhen a post request with valid expense data (amount, category, date) is sent to the '/expenses' endpoint\nthen the backend returns a success status code (e.g., 201 created)\nand the expense data is correctly stored in the sqlite database.",
+    "externalId": null,
+    "estimatedHours": 5,
+    "type": "Task"
+  },
+  {
+    "id": "a2b91e38-6eaa-4632-ae8a-163fa17711dc",
+    "title": "Story: As a User, I want visual confirmation after saving an expense",
+    "parentId": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "column": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "description": "• Context: User needs feedback that the expense logging was successful.\n• Objective: Display a temporary confirmation message (toast) after successful expense submission.\n• In Scope: Showing a success message on the frontend after API confirmation.\n• Out of Scope: Detailed error message handling, persistent notifications.\n• Assumptions: The backend API returns a success status upon saving.\n• Dependencies: Expense submission form functionality.\n• Tech Note: Implement using a React toast notification library or custom component.",
+    "acceptanceCriteria": "Given i have successfully submitted the add expense form\nand the backend confirms the save operation\nwhen the confirmation is received by the frontend\nthen a short-lived success message ('toast') appears on the screen\nand the message disappears automatically after a few seconds.",
+    "externalId": null,
+    "estimatedHours": 2,
+    "type": "Story"
+  },
+  {
+    "id": "da5dd46d-c6e6-4542-968b-0bf5f7106303",
+    "title": "Story: As a User, I want to see my monthly spending totals grouped by category",
+    "parentId": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "column": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "description": "• Context: User needs to understand where money went at the end of the month.\n• Objective: Display categorized expense totals on the '/dashboard' page.\n• In Scope: Fetching monthly data, grouping by category, displaying totals (e.g., Food: $X, Transport: $Y).\n• Out of Scope: Date range selection, filtering, comparing months.\n• Assumptions: Backend API provides categorized monthly summary data.\n• Dependencies: Backend API for summary data, React dashboard page structure.\n• Tech Note: Use React for the '/dashboard' page. Fetch data on component mount.",
+    "acceptanceCriteria": "Given i have logged expenses for the current month\nand i navigate to the '/dashboard' page\nwhen the page loads\nthen it displays a summary of total spending for the month\nand the summary shows expenses broken down by category (e.g., food, transport).",
+    "externalId": null,
+    "estimatedHours": 8,
+    "type": "Story"
+  },
+  {
+    "id": "e19f4707-feb4-4ea0-bbec-9725ec381a9a",
+    "title": "Task: Implement backend API endpoint for monthly summary",
+    "parentId": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "column": "1bed52e6-82a2-4112-a3fa-f7194fbc0ad7",
+    "description": "• Context: The dashboard needs an API to retrieve categorized monthly spending.\n• Objective: Create a FastAPI GET endpoint to calculate and return categorized expense totals for the current month.\n• In Scope: Endpoint definition, querying SQLite for current month's expenses, aggregation by category.\n• Out of Scope: Filtering by date range, handling different currencies, performance optimization for large datasets.\n• Assumptions: Expenses are stored with timestamps/dates in SQLite.\n• Dependencies: FastAPI project structure, SQLite database with expense data.\n• Tech Note: Use FastAPI, SQLite querying (potentially with an ORM).",
+    "acceptanceCriteria": "Given the fastapi backend is running\nand there is expense data for the current month in the sqlite database\nwhen a get request is sent to the '/summary/monthly' endpoint\nthen the backend returns a success status code (e.g., 200 ok)\nand the response body contains a json object with categories as keys and total amounts as values.",
+    "externalId": null,
+    "estimatedHours": 6,
+    "type": "Task"
+  },
+  {
+    "id": "1945d652-0f38-46d2-a21d-c534d0f098fa",
+    "title": "Create API endpoint to retrieve monthly expense summary",
+    "parentId": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "column": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "description": "• Context: User needs to see a summary of spending grouped by category for a given month.\n• Objective: Develop a backend API endpoint to query and aggregate expense data.\n• In Scope: Creating a GET endpoint (e.g., /dashboard), filtering by month, grouping by category, calculating totals.\n• Out of Scope: Frontend display logic, chart generation, complex date range filtering.\n• Assumptions: Summary is required on a monthly basis.\n• Dependencies: Database schema and integration must be complete. Add expense endpoint desirable for testing.\n• Tech Note: Use FastAPI for the endpoint. Query SQLite using appropriate aggregation.",
+    "acceptanceCriteria": "Given the backend api is running\nand expense data exists in the database for a specific month\nwhen a get request is sent to the /dashboard endpoint specifying that month\nthen the api returns a success response (e.g., 200 ok)\nand the response body contains aggregated expense totals grouped by category for the specified month.",
+    "externalId": null,
+    "estimatedHours": 5,
+    "type": "Story"
+  },
+  {
+    "id": "8e5d6fe8-c71e-48a6-a1dc-fc5d63c0cd90",
+    "title": "Set up FastAPI project structure for expense tracking backend",
+    "parentId": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "column": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "description": "• Context: Initial setup for the backend API supporting the expense tracking application.\n• Objective: Establish the basic FastAPI project layout, configuration, and dependencies.\n• In Scope: Creating project folders, base configuration files, and installing FastAPI.\n• Out of Scope: Implementing specific API endpoints or database integration.\n• Assumptions: Python and pip are installed on the development environment.\n• Dependencies: None for initial setup.\n• Tech Note: Use FastAPI framework as specified.",
+    "acceptanceCriteria": "Given a development environment\nand python and pip are installed\nwhen the setup script or commands are executed\nthen a basic fastapi project structure exists\nand fastapi dependencies are installed.",
+    "externalId": null,
+    "estimatedHours": 2,
+    "type": "Task"
+  },
+  {
+    "id": "abc25da2-cc5a-4aba-8281-37d8565e0f69",
+    "title": "Implement SQLite database schema and integration for expenses",
+    "parentId": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "column": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "description": "• Context: The application needs to persist expense data.\n• Objective: Define and create the SQLite database table for expenses and connect it to FastAPI.\n• In Scope: Creating 'expenses' table (amount, category, date), ORM setup (if used), basic connection.\n• Out of Scope: Implementing API endpoints that use the database.\n• Assumptions: SQLite is suitable for single-user MVP needs.\n• Dependencies: FastAPI project structure must be set up.\n• Tech Note: Use SQLite for the database as specified.",
+    "acceptanceCriteria": "Given the fastapi backend project\nand sqlite is chosen as the database\nwhen the database migration/setup is run\nthen an 'expenses' table exists in the sqlite file\nand the fastapi application can connect to the database.",
+    "externalId": null,
+    "estimatedHours": 3,
+    "type": "Task"
+  },
+  {
+    "id": "c30f2bc6-6c44-4ff0-96dc-035ca1845370",
+    "title": "Create API endpoint to add a new expense",
+    "parentId": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "column": "37b8464f-acdc-48e9-9694-7de5f6005021",
+    "description": "• Context: User needs a way to submit new expense data from the frontend.\n• Objective: Develop a backend API endpoint to receive and save expense details.\n• In Scope: Creating a POST endpoint (e.g., /expenses), validating input (amount, category, date), saving to SQLite.\n• Out of Scope: Frontend implementation, complex validation rules.\n• Assumptions: Expense data includes amount, category, and date.\n• Dependencies: Database schema and integration must be complete.\n• Tech Note: Use FastAPI to define the endpoint and handle the request/response.",
+    "acceptanceCriteria": "Given the backend api is running\nand the database connection is established\nwhen a post request is sent to the /expenses endpoint with valid amount, category, and date\nthen the api returns a success response (e.g., 201 created)\nand the new expense record is saved in the sqlite database.",
+    "externalId": null,
+    "estimatedHours": 4,
+    "type": "Story"
+  },
+  {
+    "id": "52986fab-4050-438d-9889-498bb80fbdff",
+    "title": "Task: Configure Docker Compose for simple application startup",
+    "parentId": "8c7875d3-4087-4de8-9312-c162d5e48d63",
+    "column": "8c7875d3-4087-4de8-9312-c162d5e48d63",
+    "description": "• Context: The user requires a simple local deployment method.\n• Objective: Create a docker-compose.yml file to manage application services.\n• In Scope: Defining backend and frontend services, basic network configuration.\n• Out of Scope: Production deployment configurations, multi-stage builds optimization.\n• Assumptions: Docker and Docker Compose are installed on the user's machine.\n• Dependencies: Backend and Frontend Dockerfiles must exist.\n• Tech Note: Utilize Docker Compose version 3 or higher.",
+    "acceptanceCriteria": "Given the project source code is available\nand docker compose is installed\nwhen the user runs 'docker compose up'\nthen both backend and frontend services start without errors\nand the application is accessible locally.",
+    "externalId": null,
+    "estimatedHours": 4,
+    "type": "Task"
+  },
+  {
+    "id": "77adaacd-ec3b-426d-b6cd-ca57f1e3d425",
+    "title": "Task: Create Dockerfile for React frontend service",
+    "parentId": "8c7875d3-4087-4de8-9312-c162d5e48d63",
+    "column": "8c7875d3-4087-4de8-9312-c162d5e48d63",
+    "description": "• Context: The frontend needs to be containerized for deployment.\n• Objective: Build a Docker image for the React application.\n• In Scope: Installing Node dependencies, building the static assets, serving assets (e.g., via Nginx or Node server).\n• Out of Scope: Server-Side Rendering (SSR) setup, advanced Nginx configuration.\n• Assumptions: A package.json file exists for Node dependencies.\n• Dependencies: Functional React application code.\n• Tech Note: Use an official Node base image for building. Consider Nginx for serving. Utilize React.",
+    "acceptanceCriteria": "Given the react application source code\nand a dockerfile defining the build steps\nwhen the 'docker build' command is executed for the frontend\nthen a docker image is successfully created without errors\nand the image serves the react app when run.",
+    "externalId": null,
+    "estimatedHours": 4,
+    "type": "Task"
+  },
+  {
+    "id": "8faea46b-3d9b-41e8-8a9c-3d7ccbd689f7",
+    "title": "Task: Create Dockerfile for FastAPI backend service",
+    "parentId": "8c7875d3-4087-4de8-9312-c162d5e48d63",
+    "column": "8c7875d3-4087-4de8-9312-c162d5e48d63",
+    "description": "• Context: The backend needs to be containerized for deployment.\n• Objective: Build a Docker image for the FastAPI application.\n• In Scope: Installing Python dependencies, copying application code, exposing the correct port.\n• Out of Scope: Image security scanning, multi-stage builds.\n• Assumptions: A requirements.txt or similar file exists for Python dependencies.\n• Dependencies: Functional FastAPI application code.\n• Tech Note: Use an official Python base image. Utilize FastAPI.",
+    "acceptanceCriteria": "Given the fastapi application source code\nand a dockerfile defining the build steps\nwhen the 'docker build' command is executed for the backend\nthen a docker image is successfully created without errors\nand the image can be run as a container.",
+    "externalId": null,
+    "estimatedHours": 3,
+    "type": "Task"
+  },
+  {
+    "id": "32c809d0-f94c-4c43-83d5-5af88aab4b02",
+    "title": "As a user, I want a form to quickly add an expense",
+    "parentId": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "column": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "description": "• Context: User needs a simple and fast way to log expenses via the UI.\n• Objective: Implement the '/add' page with a form for amount, category, and date.\n• In Scope: Creating form fields, save button, basic client-side validation (e.g., required fields), calling backend API.\n• Out of Scope: Complex UI styling, date picker implementation details (basic input okay).\n• Assumptions: Category can be a text input for MVP.\n• Dependencies: React project setup complete. Backend API endpoint for adding expenses must exist.\n• Tech Note: Use React for the component. Use fetch or axios for API calls.",
+    "acceptanceCriteria": "Given i am on the '/add' page\nand the form fields for amount, category, and date are visible\nwhen i fill in the fields and click 'save'\nthen a request is sent to the backend api to save the expense\nand a success confirmation (toast) is displayed.",
+    "externalId": null,
+    "estimatedHours": 5,
+    "type": "Story"
+  },
+  {
+    "id": "68631e60-2937-4df8-90ff-df0d142ffad3",
+    "title": "Set up React project structure for expense tracking frontend",
+    "parentId": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "column": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "description": "• Context: Initial setup for the frontend user interface.\n• Objective: Establish the basic React project layout, configuration, and dependencies.\n• In Scope: Using Create React App or similar, setting up basic routing for /add and /dashboard.\n• Out of Scope: Implementing specific page components or API integrations.\n• Assumptions: Node.js and npm/yarn are installed.\n• Dependencies: None for initial setup.\n• Tech Note: Use React library as specified.",
+    "acceptanceCriteria": "Given a development environment\nand node.js and npm/yarn are installed\nwhen the react project setup command is executed\nthen a basic react project structure exists\nand core react dependencies are installed.",
+    "externalId": null,
+    "estimatedHours": 2,
+    "type": "Task"
+  },
+  {
+    "id": "f018d1a5-e080-474d-83d1-6d16d3665275",
+    "title": "Implement toast notification for save confirmation",
+    "parentId": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "column": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "description": "• Context: User needs visual feedback confirming their expense was saved successfully.\n• Objective: Display a non-intrusive temporary message (toast) after saving an expense.\n• In Scope: Integrating a toast library, triggering the toast on successful API response from saving.\n• Out of Scope: Implementing different types of notifications (error, warning).\n• Assumptions: A simple success message is sufficient.\n• Dependencies: Add expense form implementation must be complete.\n• Tech Note: Use a React toast library (e.g., react-toastify).",
+    "acceptanceCriteria": "Given i am on the '/add' page\nand i have filled the expense form\nwhen i click 'save' and the backend confirms success\nthen a short-lived toast message appears confirming 'expense saved'\nand the message disappears automatically after a few seconds.",
+    "externalId": null,
+    "estimatedHours": 2,
+    "type": "Task"
+  },
+  {
+    "id": "f198d5cc-1abd-424d-aa34-aeb196c9ee43",
+    "title": "As a user, I want to see my monthly spending summary",
+    "parentId": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "column": "b719a04c-7fbc-4786-bb4b-8bd49208a719",
+    "description": "• Context: User needs to understand where their money went at the end of the month.\n• Objective: Implement the '/dashboard' page to display categorized monthly totals.\n• In Scope: Fetching data from the backend summary endpoint, displaying totals grouped by category, integrating a simple chart.\n• Out of Scope: Complex filtering options, custom date ranges, advanced analytics.\n• Assumptions: A basic bar or pie chart is sufficient.\n• Dependencies: React project setup complete. Backend API endpoint for summary must exist.\n• Tech Note: Use React for the component. Integrate a simple charting library (e.g., Chart.js, Recharts).",
+    "acceptanceCriteria": "Given i am on the '/dashboard' page\nand expense data exists for the current/selected month\nwhen the page loads\nthen data is fetched from the backend summary endpoint\nand the page displays expense totals grouped by category, including a simple chart visualization.",
+    "externalId": null,
+    "estimatedHours": 6,
+    "type": "Story"
+  }
+]

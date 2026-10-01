@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-10-01T18:40:49.276Z",
+  "project_root": "C:\\Users\\william.bautista\\Downloads\\sample-repo\\sample-repo",
+  "totals": {
+    "sessions": 0,
+    "supervised_tokens": 0,
+    "billable_supervised_tokens": 0,
+    "held_supervised_tokens": 0,
+    "cost_usd": 0,
+    "artifact_count": 0,
+    "reported_sessions": 0,
+    "supervised_cost_usd": 0,
+    "billable_cost_usd": 0,
+    "coverage": "none"
+  },
+  "sessions": [],
+  "by_capability": {},
+  "by_instance": {},
+  "by_archetype": {},
+  "notes": [
+    "COST perspective only (what was paid to the LLM provider, from the billing aggregator).",
+    "PRICE questions: multiply billable_supervised_tokens by the registry token-pricing tiers (normalize each SKU unit)."
+  ]
+}
