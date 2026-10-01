@@ -10,7 +10,8 @@
       "Write(//c/Users/william.bautista/.coda/skills/innovation-prototype-test/references/schema.json)",
       "Write(//c/Users/william.bautista/.coda/skills/innovation-cycle/SKILL.md)",
       "Write(//c/Users/william.bautista/.coda/skills/innovation-value-feasibility/SKILL.md)",
-      "Write(//c/Users/william.bautista/.coda/skills/innovation-value-feasibility/references/schema.json)"
+      "Write(//c/Users/william.bautista/.coda/skills/innovation-value-feasibility/references/schema.json)",
+      "Bash(git rm --cached sample-repo:=)"
     ]
   }
 }
